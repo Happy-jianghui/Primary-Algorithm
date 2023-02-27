@@ -54,3 +54,18 @@ def reverse(nums, start, end) -> None:
         
 print(rotate(nums = [1,2,3,4,5,6,7], k = 3))   
 ```
+
+## 217.存在重复元素
+**解题思路**：新建哈希表（散列表），然后遍历数组的所有元素，如果不在哈希表，则加入哈希表，如果在哈希表，则返回True，遍历完后没找到重复数组，则返回False
+```Python
+def containsDuplicate(nums) -> bool:
+        hash = {}
+
+        for i in nums:
+            if i in hash:
+                return True
+            hash[i] = i
+        return False
+
+print(containsDuplicate([1,1,1,3,3,4,3,2,4,2]))  
+```
