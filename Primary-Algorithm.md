@@ -70,7 +70,7 @@ def containsDuplicate(nums) -> bool:
 print(containsDuplicate([1,1,1,3,3,4,3,2,4,2]))  
 ```
 
-## 217.存在重复元素
+## 217.只出现一次的数字
 **解题思路1**：新建哈希表（散列表），然后i遍历数组的所有元素，如果不在哈希表，将元素的值为1加入哈希表，如果在哈希表，则将哈希表的元素加1，遍历完数组元素后j遍历哈希表的key,找最早key==1的值，然后返回j
 ```Python
 def singleNumber(nums) -> int:
@@ -97,4 +97,28 @@ def singleNumber(nums) -> int:
     return res
 
 print(singleNumber([4,1,2,1,2])) 
+```
+
+## 350.两个数组的交集 II
+**解题思路1**：利用双指针，先把两个数组排序好后，指针left指向nums1数组首位，指针right指向nums2数组首位，创建临时空列表，用于放结果，开始比较指针left和right的值大小，若两个值不相等，则数字小的指针往右移动一位，若两个指针的值相等，则加入到res，若 nums1 或 nums2 有一方遍历结束，代表另一方的剩余值，都是唯一存在，且不会与之产生交集的。
+```Python
+def intersect(nums1, nums2):
+        nums1.sort()
+        nums2.sort()
+        n, m = len(nums1), len(nums2)
+        left, right = 0, 0
+        res = []
+
+        while left < n and right < m:
+            if nums1[left] < nums2[right]:
+                left += 1
+            elif nums1[left] > nums2[right]:
+                right += 1
+            else:
+                res.append(nums1[left])
+                left += 1
+                right += 1
+        return res
+
+print(intersect([1,2,2,1],[2,2]))
 ```
