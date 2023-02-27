@@ -122,3 +122,22 @@ def intersect(nums1, nums2):
 
 print(intersect([1,2,2,1],[2,2]))
 ```
+
+## 66.加一
+**解题思路1**：数组末位数字加1，然后开始倒序遍历数组。判断当前位数字是否需要进位，做出对应处理。遍历数组完毕，若还存在进位，则数组首位添加1即可。
+```Python
+def plusOne(digits):
+    n = len(digits)
+
+    for i in range(n-1, -1, -1):
+        if digits[i] != 9:
+            digits[i] += 1
+            return digits
+        else:
+            digits[i] = 0
+            if digits[0] is 0:
+                digits.insert(0, 1)
+                return digits
+
+print(plusOne([1,2,9]))
+```
