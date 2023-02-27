@@ -69,3 +69,32 @@ def containsDuplicate(nums) -> bool:
 
 print(containsDuplicate([1,1,1,3,3,4,3,2,4,2]))  
 ```
+
+## 217.存在重复元素
+**解题思路1**：新建哈希表（散列表），然后i遍历数组的所有元素，如果不在哈希表，将元素的值为1加入哈希表，如果在哈希表，则将哈希表的元素加1，遍历完数组元素后j遍历哈希表的key,找最早key==1的值，然后返回j
+```Python
+def singleNumber(nums) -> int:
+        hash = {}
+
+        for i in nums:
+            if i not in hash:
+                hash[i] = 1
+            else:
+                hash[i] += 1        
+        for j in hash:
+            if hash[j] == 1:
+                return j
+
+print(singleNumber([4,1,2,1,2])) 
+```
+
+**解题思路1**：异或运算
+```Python
+def singleNumber(nums) -> int:
+        res = 0
+    for i in nums:
+        res ^= i
+    return res
+
+print(singleNumber([4,1,2,1,2])) 
+```
