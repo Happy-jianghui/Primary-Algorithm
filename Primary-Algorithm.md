@@ -141,3 +141,34 @@ def plusOne(digits):
 
 print(plusOne([1,2,9]))
 ```
+
+## 283.移动零
+**解题思路1**：利用双指针，一个指针j指向数组首位，然后指针i遍历整个数组，如果遍历的元素不等于0，j和i的值交换，j往右一位
+def moveZeroes(nums) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        n = len(nums)
+        if n == 1: return nums
+        j = 0
+
+        for i in range(n):
+            if nums[i] != 0:
+                nums[j], nums[i] = nums[i], nums[j]
+                j += 1
+        return nums
+print(moveZeroes([0,1,0,3,12]))
+```
+
+## 1.两数之和
+**解题思路1**：利用哈希表，先遍历数组的所有元素，然后减target所得的结果是否在哈希表，如果在，则返回数组[哈希表的键对着值, 遍历当前的索引]，否则加入到哈希表
+def twoSum(self, nums: List[int], target: int) -> List[int]:
+        n = len(nums)
+        hash = {}
+
+        for i in range(n):
+            tmp = target - nums[i]
+            if tmp in hash:
+                return [hash[tmp], i]
+            hash[nums[i]] = i
+```
