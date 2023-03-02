@@ -174,3 +174,20 @@ def twoSum(self, nums: List[int], target: int) -> List[int]:
                 return [hash[tmp], i]
             hash[nums[i]] = i
 ```
+
+## 48.旋转图像
+**解题思路**：以位于矩阵四个角点的元素为例，设矩阵左上角元素A 、右上角元素B 、右下角元素 C、左下角元素D 。矩阵旋转 90度后，相当于依次先后执行D→A, C→D, B→C, A→B修改元素
+
+```Python
+def rotate(matrix) -> None:
+        n = len(matrix)
+        for i in range(n // 2):
+            for j in range((n + 1) // 2):
+                tmp = matrix[i][j]
+                matrix[i][j] = matrix[n - 1 - j][i]
+                matrix[n - 1 - j][i] = matrix[n - 1 - i][n - 1 - j]
+                matrix[n - 1 - i][n - 1 - j] = matrix[j][n - 1 - i]
+                matrix[j][n - 1 - i] = tmp
+
+print(rotate([[1,2,3],[4,5,6],[7,8,9]]))
+```
