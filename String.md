@@ -86,3 +86,35 @@ def isPalindrome(self, s: str) -> bool:
         return True
 ```
 
+## 28.找出字符串中第一个匹配项的下表
+**解题思路**：KMP没看懂，用暴力法，次列表的长度遍历主列表，直到找到对应的字符串，就返回第一个的下标，否则返回-1
+```Python
+def strStr(haystack, needle) -> int:
+        n = len(needle)
+        if n == 0:
+            return 0
+        for i in range(len(haystack) - n + 1):
+            if haystack[i:i + n] == needle:
+                return i
+        return -1
+print(strStr( "sadbutsad", "but"))
+```
+
+## 14.最长公共前缀
+**解题思路**：当字符串数组长度为 0 时则公共前缀为空，直接返回，令最长公共前缀 ans 的值为第一个字符串，进行初始化，遍历后面的字符串，依次将其与 ans 进行比较，两两找出公共前缀，最终结果即为最长公共前缀，如果查找过程中出现了 ans 为空的情况，则公共前缀不存在直接返回
+```Python
+def longestCommonPrefix(strs) -> str:
+    if len(strs) == 0: return ""
+    ans = strs[0]
+    for i in range(1, len(strs)):
+        idx = 0
+        for c1, c2 in zip(ans, strs[i]):
+            if c1 != c2:
+                break
+            idx += 1
+        ans = ans[0:idx]
+        if ans == "": return ans
+    return ans
+
+print(longestCommonPrefix(["flower","flow","flight"]))
+```
