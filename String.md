@@ -46,3 +46,43 @@ def firstUniqChar(self, s: str) -> int:
                 return j
         return -1
 ```
+
+
+## 242.有效的字母异位词
+**解题思路**：使用哈希表存储索引，首先判断两个字符串长度是否相等，不相等则直接返回 false，若相等，则初始化 26 个字母哈希表，遍历字符串 s 和 t，s 负责在对应位置增加，t 负责在对应位置减少，如果哈希表的值都为 0，则二者是字母异位词
+```Python
+def firstUniqChar(self, s: str) -> int:
+        hash = {}
+
+        for i, c in enumerate(s):
+            if c in hash:
+                hash[c] = -1
+            else:
+                hash[c] = i
+        for j in hash.values():
+            if j != -1:
+                return j
+        return -1
+```
+
+## 125.验证回文串
+**解题思路**：双指针，遇到非数字字母的字符直接跳过，再判断这两个指针指向的字符是否相同，直到相遇
+```Python
+def isPalindrome(self, s: str) -> bool:
+        i, j = 0, len(s)-1
+
+        while i < j:
+            # not string.isalnum 如果不是字母或者数字，则直接跳过
+            while i < j and not s[i].isalnum():
+                i += 1
+            while i < j and not s[j].isalnum():
+                j -= 1
+
+            if i < j:
+                if s[i].lower() != s[j].lower():
+                    return False
+                i += 1
+                j -= 1
+        return True
+```
+
