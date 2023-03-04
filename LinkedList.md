@@ -35,3 +35,20 @@ def reverseList(self, head: ListNode) -> ListNode:
             pre = temp
         return cur
 ```
+
+## 206.合并两个有序链表
+**解题思路**：初始化一个辅助节点 dummy 作为合并链表的伪头节点，将各节点添加至 dummy 之后，用双指针list1和list2遍历两链表，根据list1.val和list2.val的大小关系确定节点添加顺序，两节点指针交替前进，直至遍历完毕。
+```Python
+def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = cur = ListNode()
+        while list1 and list2:
+            if list1.val > list2.val:
+                cur.next = list2
+                list2 = list2.next
+            else:
+                cur.next = list1
+                list1 = list1.next
+            cur = cur.next
+        cur.next = list1 if list1 else list2
+        return dummy.next
+```
