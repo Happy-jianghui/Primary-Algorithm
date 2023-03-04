@@ -52,3 +52,18 @@ def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) ->
         cur.next = list1 if list1 else list2
         return dummy.next
 ```
+
+## 141.环形链表
+**解题思路**：快慢指针，快指针走两步，慢指针走一步，若相遇，则返回True，否则返回False
+```Python
+def hasCycle(self, head: Optional[ListNode]) -> bool:
+        if not head: return False
+        fast = slow = head
+
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+            if fast == slow:
+                return True
+        return False
+```
