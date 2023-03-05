@@ -69,3 +69,19 @@ def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
             res.append(temp)
         return res
 ```
+
+## 108.将有序数组转换为二叉搜索树
+**解题思路**：看到BST，优先想到中序遍历，由于题目要求高度平衡，在数组取中间的元素，该元素左边的升序序列构建左子树，该元素的右边的升序序列构建右子树
+```Python
+def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+        if not nums: return None
+        mid = len(nums)//2
+        node = TreeNode(nums[mid])
+
+        left = nums[:mid]
+        right = nums[mid+1:]
+
+        node.left = self.sortedArrayToBST(left)
+        node.right = self.sortedArrayToBST(right)
+        return node
+```
