@@ -39,3 +39,27 @@ def countPrimes(self, n: int) -> int:
 def isPowerOfThree(self, n: int) -> bool:
          return n > 0 and 1162261467 % n == 0        
 ```
+
+## 13.罗马数字转整数
+**解题思路**：从左到右扫描字符串，如果当前字符代表的数字小于下一个字符代表的数字，则减去当前字符代表的数字；否则，加上当前字符代表的数字。
+```Python
+def romanToInt(self, s: str) -> int:
+        hashmap = {
+            "I" : 1,
+            "V" : 5,
+            "X" : 10,
+            "L" : 50,
+            "C" : 100,
+            "D" : 500,
+            "M" : 1000
+        }
+        n = len(s)
+        res = 0
+        
+        for i in range(1, n):
+            if hashmap[s[i-1]] < hashmap[s[i]]:
+                res -= hashmap[s[i-1]]
+            else:
+                res += hashmap[s[i-1]]
+        return res + hashmap[s[-1]]     
+```
