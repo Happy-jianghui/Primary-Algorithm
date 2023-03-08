@@ -32,3 +32,10 @@ def countPrimes(self, n: int) -> int:
                     isNumPrimes[j] = False # 把合数置为 False
         return count
 ```
+
+## 326.3的幂
+**解题思路**：如果n是3的幂，那么1162261467必定能够被n整除，因此可以使用%运算符来判断n是否为3的幂
+```Python
+def isPowerOfThree(self, n: int) -> bool:
+         return n > 0 and 1162261467 % n == 0        
+```
