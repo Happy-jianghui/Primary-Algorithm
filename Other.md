@@ -62,3 +62,14 @@ def isValid(self, s: str) -> bool:
                 return False
         return len(stack) == 1
 ```
+
+## 缺失数字
+**解题思路**：将 [0, n] 中的所有数字和数组 nums 中的所有数字都进行异或运算，最终的结果就是缺失的那个数字。
+```Python
+def missingNumber(self, nums: List[int]) -> int:
+        n = len(nums)
+        missing = n
+        for i in range(n):
+            missing ^= i ^ nums[i]
+        return missing
+```
