@@ -23,3 +23,27 @@ def hammingDistance(self, x: int, y: int) -> int:
             res >>= 1
         return count
 ```
+
+## 190.颠倒二进制位
+**解题思路**：每次把res左移，把n的二进制末尾数字，拼接到结果res的末尾。然后把n右移
+```Python
+def reverseBits(self, n: int) -> int:
+        res = 0
+        for i in range(32):
+            res = (res << 1) | (n & 1)
+            n >>= 1
+        return res
+```
+
+## 118.杨辉三角
+**解题思路**：每次把res左移，把n的二进制末尾数字，拼接到结果res的末尾。然后把n右移
+```Python
+def generate_pascals_triangle(num_rows):
+    triangle = []
+    for i in range(num_rows):
+        row = [1] * (i + 1)  # 每一行的两端元素都是1
+        for j in range(1, i):
+            row[j] = triangle[i - 1][j - 1] + triangle[i - 1][j]
+        triangle.append(row)
+    return triangle
+```
