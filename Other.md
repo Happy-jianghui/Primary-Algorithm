@@ -36,7 +36,7 @@ def reverseBits(self, n: int) -> int:
 ```
 
 ## 118.杨辉三角
-**解题思路**：每次把res左移，把n的二进制末尾数字，拼接到结果res的末尾。然后把n右移
+**解题思路**：使用一个二维数组来存储三角形中的数字。数组的行数是三角形的行数，而每一行的列数等于该行数字的个数。在每一行中，第一个和最后一个数字都是1，其他数字等于它上方两个数字之和。
 ```Python
 def generate(self, numRows: int) -> List[List[int]]:
         triangle = [[1]]
