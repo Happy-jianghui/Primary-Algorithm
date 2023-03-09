@@ -38,12 +38,13 @@ def reverseBits(self, n: int) -> int:
 ## 118.杨辉三角
 **解题思路**：每次把res左移，把n的二进制末尾数字，拼接到结果res的末尾。然后把n右移
 ```Python
-def generate_pascals_triangle(num_rows):
-    triangle = []
-    for i in range(num_rows):
-        row = [1] * (i + 1)  # 每一行的两端元素都是1
-        for j in range(1, i):
-            row[j] = triangle[i - 1][j - 1] + triangle[i - 1][j]
-        triangle.append(row)
-    return triangle
+def generate(self, numRows: int) -> List[List[int]]:
+        triangle = [[1]]
+        for i in range(1,numRows):
+            row = [1]
+            for j in range(1, i):
+                row.append(triangle[i-1][j-1] + triangle[i-1][j])
+            row.append(1)
+            triangle.append(row)
+        return triangle
 ```
