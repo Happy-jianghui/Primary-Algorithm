@@ -10,3 +10,16 @@ def hammingWeight(self, n: int) -> int:
             n >>= 1  # 将n右移一位
         return count  # 返回计数器count的值
 ```
+
+## 461.汉明距离
+**解题思路**：和191思路差不多，先两个数异或运算，再用191思路来解题
+```Python
+def hammingDistance(self, x: int, y: int) -> int:
+        count = 0
+        res = x ^ y
+        while res:
+            if res & 1:
+                count += 1
+            res >>= 1
+        return count
+```
