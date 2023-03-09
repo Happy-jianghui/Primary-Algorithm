@@ -48,3 +48,17 @@ def generate(self, numRows: int) -> List[List[int]]:
             triangle.append(row)
         return triangle
 ```
+
+## 20.有效的括号
+**解题思路**：哈希表+栈，栈长度保留一位
+```Python
+def isValid(self, s: str) -> bool:
+        dic = {'(':')', '[':']', '{':'}', '?':'?'}
+        stack = ['?']
+        for i in s:
+            if i in dic:
+                stack.append(i)
+            elif dic[stack.pop()] != i:
+                return False
+        return len(stack) == 1
+```
